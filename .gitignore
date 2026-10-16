@@ -1,0 +1,12 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.env
+
+# Build / CAD outputs
+*.log
+build/
+dist/
+*.stl.bak
