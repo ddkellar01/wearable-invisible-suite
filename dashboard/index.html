@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Active Camouflage Telemetry Dashboard</title>
+    <style>
+        body { font-family: monospace; background: #111; color: #0f0; padding: 20px; }
+        .card { border: 1px solid #0f0; padding: 15px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Suit Telemetry & Diagnostics</h1>
+    <div class="card">
+        <h3>System Status: <span id="status">ONLINE</span></h3>
+        <p>Battery Level: <span id="battery">98%</span> (Est. 2h 54m)</p>
+        <p>Core Temp: <span id="temp">42.5°C</span></p>
+    </div>
+    <div class="card">
+        <h3>Active Modules</h3>
+        <p>Camera Array: 8/8 Active</p>
+        <p>Perspective Warp Latency: <span id="latency">12ms</span></p>
+    </div>
+</body>
+</html>
