@@ -8,14 +8,13 @@ on:
 
 jobs:
   build:
-    # Use GitHub's standard cloud-hosted runners instead of a self-hosted device
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up QEMU (for multi-architecture builds if needed)
+      - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
@@ -36,3 +35,4 @@ jobs:
           tags: |
             credkellar/wearable-invisible:latest
             credkellar/wearable-invisible:${{ github.sha }}
+            
