@@ -13,6 +13,6 @@ services:
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - ../src:/workspace/wearable-invisible-suit/src
-      - ../config:/workspace/wearable-invisible-suit/config
+      - ../src:/workspace/src
+      - ../config:/workspace/config
     restart: unless-stopped
