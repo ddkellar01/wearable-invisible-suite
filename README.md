@@ -49,6 +49,51 @@ Imagine standing in front of a brick wall 🧱 and wanting to hide:
         ▼ (Sent to Jetson Orin Nano)
  🧠 [ NVIDIA Jetson Brain ] ──(Perspective Warping)──> 🎨 [ Flexible OLED Screens ] ➡️ 🧱 (Invisibility Achieved!)
 
+______________________
+
+🌐 3D 4K Payload System Architecture Diagram
+
+                                [ 3D SPACE / ENVIRONMENT ]
+                                            │
+                        ┌───────────────────┴───────────────────┐
+                        │  Incoming Ambient Light & Background  │
+                        └───────────────────┬───────────────────┘
+                                            │
+                                            ▼
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                        LAYER 1: OPTICAL INGESTION & SENSING                            │
+│                                                                                        │
+│   [ Micro-Camera Array (Back) ]             [ IMU Sensor & Body Motion Telemetry ]     │
+│         │ (V4L2 Raw Stream)                         │ (Spatial Orientation)            │
+└─────────┼───────────────────────────────────────────┼──────────────────────────────────┘
+          │                                           │
+          └─────────────────────┬─────────────────────┘
+                                │ High-Speed Data Bus (USB/MIPI)
+                                ▼
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                   LAYER 2: EDGE PROCESSING & COMPUTE (JETSON CORE)                     │
+│                                                                                        │
+│                      +------------------------------------------+                      │
+│                      | NVIDIA Jetson Orin Nano (ARM64 / L4T)    |                      │
+│                      |                                          |                      │
+│                      |  • CUDA Accelerated Video Pipeline       |                      │
+│                      |  • Real-Time Homography & Perspective    |                      │
+│                      |    Warping (OpenCV / PyTorch)            |                      │
+│                      |  • Parallax & View-Dependent Correction  |                      │
+│                      +------------------------------------------+                      │
+└───────────────────────────────────────┬────────────────────────────────────────────────┘
+                                        │ SPI Matrix Driver Protocol
+                                        ▼
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                    LAYER 3: DYNAMIC PROJECTION & OUTPUT                                │
+│                                                                                        │
+│   [ Flexible Micro-OLED Fabric Panel Array (Front) ]                                   │
+│         │                                                                              │
+│         └─> Real-Time Background Light Reconstruction (Invisibility Achieved) 🪄✨     │
+└────────────────────────────────────────────────────────────────────────────────────────┘
+
+______________________
+
 wearable-invisible-suite/
 ├── .github/
 │   └── workflows/
