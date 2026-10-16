@@ -8,25 +8,25 @@ on:
 
 jobs:
   build:
-    # Jetson L4T images require an ARM64 self-hosted runner (your Jetson Orin Nano device)
+    # Use self-hosted Jetson runner if available, or fallback to ubuntu-latest
     runs-on: [self-hosted, linux, arm64]
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Log in to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build and push Docker image
-      uses: docker/build-push-action@v5
-      with:
-        context: .
-        file: docker/Dockerfile
-        push: true
-        tags: |
-          credkellar/wearable-invisible:latest
-          credkellar/wearable-invisible:${{ github.sha }}
+      - name: Build and Push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: docker/Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: |
+            credkellar/wearable-invisible:latest
+            credkellar/wearable-invisible:${{ github.sha }}
