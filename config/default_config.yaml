@@ -1,0 +1,14 @@
+system:
+  name: "Wearable Invisible Body Motion Suite"
+  version: "1.0.0"
+  environment: "jetson-orin-nano"
+
+cameras:
+  count: 8
+  resolution: [3840, 2160]
+  fps: 60
+
+display:
+  type: "micro-oled-weave"
+  resolution: [1920, 1080]
+  refresh_rate: 60
