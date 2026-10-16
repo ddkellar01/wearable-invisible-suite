@@ -8,7 +8,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Jetson L4T images require an ARM64 self-hosted runner (your Jetson Orin Nano device)
+    runs-on: [self-hosted, linux, arm64]
 
     steps:
     - name: Checkout repository
@@ -23,7 +24,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v5
       with:
-        context: ./docker
+        context: .
         file: docker/Dockerfile
         push: true
         tags: |
