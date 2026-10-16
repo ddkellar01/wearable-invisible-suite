@@ -21,8 +21,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install -e .  # Installs the current package in editable mode so 'src' is discoverable
           
       - name: Run Code Linting & Unit Tests
+        env:
+          PYTHONPATH: .  # Ensures Python recognizes the root directory
         run: |
           pip install flake8 pytest
           flake8 src/ --count --select=E9,F63,F7,F82 --show-source --statistics
